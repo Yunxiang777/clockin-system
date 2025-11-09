@@ -1,0 +1,3 @@
+<%- include("../partials/message", { message }) %> <% if (!employeeId) { %> <%-
+include("../partials/loginForm") %> <% } else { %> <%-
+include("../partials/clockinForm", { employeeId, records }) %> <% } %>

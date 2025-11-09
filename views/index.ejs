@@ -44,25 +44,6 @@
     </ul>
     <% } %>
 
-    <script>
-      // 抓取 GPS 位置
-      function updateGPS() {
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            document
-              .querySelectorAll("#lat")
-              .forEach((i) => (i.value = pos.coords.latitude));
-            document
-              .querySelectorAll("#lng")
-              .forEach((i) => (i.value = pos.coords.longitude));
-          },
-          (err) => {
-            alert("請開啟定位功能才能打卡。");
-          }
-        );
-      }
-
-      updateGPS();
-    </script>
+    <script src="/js/gps.js"></script>
   </body>
 </html>
