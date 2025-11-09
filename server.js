@@ -6,9 +6,9 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes.js";
 import recordRoutes from "./routes/record.routes.js";
+import homeRoutes from "./routes/home.routes.js";
 import { connectDB } from "./config/db.js";
 
 dotenv.config();
@@ -30,10 +30,7 @@ connectDB();
 // Routes
 app.use("/", authRoutes);
 app.use("/", recordRoutes);
-app.get("/", (req, res) => {
-  const employeeId = req.cookies.employeeId || null;
-  res.render("index", { employeeId, records: [], message: null });
-});
+app.use("/", homeRoutes);
 
 // HTTPS 設定
 const httpsOptions = {
