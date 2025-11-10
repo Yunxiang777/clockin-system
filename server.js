@@ -29,7 +29,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ 啟用 layout 功能
+// 啟用 layout 功能
 app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 
@@ -37,6 +37,7 @@ app.set("layout", "layouts/layout");
 connectDB();
 
 // Routes
+// 首頁
 app.use("/", homeRoutes);
 app.use("/", authRoutes);
 app.use("/", recordRoutes);

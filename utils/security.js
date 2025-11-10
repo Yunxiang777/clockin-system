@@ -1,17 +1,18 @@
 // utils/security.js
 import crypto from "crypto";
 
-export function generateDeviceHash(employeeId, userAgent) {
-  const salt = process.env.SALT || "mySecretSalt";
+export function generateDeviceHash(employeeId) {
+  const salt = process.env.SALT;
   return crypto
     .createHash("sha256")
-    .update(employeeId + userAgent + salt)
+    .update(employeeId + salt)
     .digest("hex");
 }
 
+// 確認使用者是否在公司
 export function isNearCompany(lat, lng) {
-  const companyLat = 22.608238;
-  const companyLng = 120.344137;
+  const companyLat = process.env.COMPANYLAT;
+  const companyLng = process.env.COMPANYLNG;
   const distance = Math.sqrt(
     Math.pow(companyLat - lat, 2) + Math.pow(companyLng - lng, 2)
   );

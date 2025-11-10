@@ -21,5 +21,5 @@ function updateGPS() {
   );
 }
 
-// 頁面載入後自動執行
+// 頁面載入執行
 document.addEventListener("DOMContentLoaded", updateGPS);

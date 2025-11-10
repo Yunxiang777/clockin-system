@@ -22,7 +22,7 @@ export async function clockInService(employeeId, lat, lng, ip) {
   return { records, message: "✅ 打卡成功！" };
 }
 
-// ✅ 查詢某員工的打卡紀錄（登入後使用）
+// 員工打卡紀錄
 export async function getRecords(employeeId) {
   return await Record.find({ employeeId }).sort({ time: -1 });
 }
