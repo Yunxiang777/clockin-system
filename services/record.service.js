@@ -1,16 +1,19 @@
 import { Record } from "../models/record.model.js";
 import { isNearCompany } from "../utils/location.js";
 
-// ✅ 打卡邏輯
+// 打卡邏輯
 export async function clockInService(employeeId, lat, lng, ip) {
-  if (!ip.startsWith("192.168.")) {
-    return { records: [], message: "⚠️ 請連接公司 Wi-Fi" };
-  }
+  // 公司內網
+  // if (!ip.startsWith("192.168.")) {
+  //   return { records: [], message: "⚠️ 請連接公司 Wi-Fi" };
+  // }
 
+  // 定位範圍
   if (!isNearCompany(lat, lng)) {
     return { records: [], message: "❌ GPS 不在公司範圍內" };
   }
 
+  // 執行打卡
   await Record.create({
     employeeId,
     time: new Date(),

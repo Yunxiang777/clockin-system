@@ -37,10 +37,9 @@ app.set("layout", "layouts/layout");
 connectDB();
 
 // Routes
-// 首頁
-app.use("/", homeRoutes);
-app.use("/", authRoutes);
-app.use("/", recordRoutes);
+app.use("/", homeRoutes); //首頁
+app.use("/", authRoutes); //登入
+app.use("/", recordRoutes); //打卡
 
 // HTTPS 設定
 const httpsOptions = {

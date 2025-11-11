@@ -1,11 +1,21 @@
 // controllers/auth.controller.js
 import { findUser, createUser } from "../services/user.service.js";
 import { getRecords } from "../services/record.service.js";
-import { isNearCompany } from "../utils/security.js";
+import { isNearCompany } from "../utils/location.js";
 
 export async function login(req, res) {
   const { employeeId, lat, lng, deviceHash } = req.body;
   const ip = req.ip.replace(/^::ffff:/, "");
+
+  // wifi連網判斷
+  // if (!ip.startsWith("192.168.")) {
+  //   return res.render("index", {
+  //     title: "員工打卡系統",
+  //     employeeId: null,
+  //     records: [],
+  //     message: "⚠️ 請連接公司 Wi-Fi",
+  //   });
+  // }
 
   // 目前使用者
   let user = await findUser(employeeId);
