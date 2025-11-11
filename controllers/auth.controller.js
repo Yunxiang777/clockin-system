@@ -8,14 +8,14 @@ export async function login(req, res) {
   const ip = req.ip.replace(/^::ffff:/, "");
 
   // wifi連網判斷
-  // if (!ip.startsWith("192.168.")) {
-  //   return res.render("index", {
-  //     title: "員工打卡系統",
-  //     employeeId: null,
-  //     records: [],
-  //     message: "⚠️ 請連接公司 Wi-Fi",
-  //   });
-  // }
+  if (!ip.startsWith("192.168.")) {
+    return res.render("index", {
+      title: "員工打卡系統",
+      employeeId: null,
+      records: [],
+      message: "⚠️ 請連接公司 Wi-Fi",
+    });
+  }
 
   // 目前使用者
   let user = await findUser(employeeId);

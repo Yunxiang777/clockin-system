@@ -4,9 +4,9 @@ import { isNearCompany } from "../utils/location.js";
 // 打卡邏輯
 export async function clockInService(employeeId, lat, lng, ip) {
   // 公司內網
-  // if (!ip.startsWith("192.168.")) {
-  //   return { records: [], message: "⚠️ 請連接公司 Wi-Fi" };
-  // }
+  if (!ip.startsWith("192.168.")) {
+    return { records: [], message: "⚠️ 請連接公司 Wi-Fi" };
+  }
 
   // 定位範圍
   if (!isNearCompany(lat, lng)) {
